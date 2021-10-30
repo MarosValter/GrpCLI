@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<LangVersion>preview</LangVersion>
+		<StartupObject>GrpCLI.Program</StartupObject>
+		<RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<AssemblyName>GrpCLI</AssemblyName>
+		<Configurations>Debug;Release;DebugGenerator</Configurations>
+		<!--<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GeneratedFiles</CompilerGeneratedFilesOutputPath>-->
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DocumentationFile>C:\Users\maros.valter\source\repos\GrpCLI\GrpCLI\GrpCLI.xml</DocumentationFile>
+	</PropertyGroup>
+		
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugGenerator|AnyCPU'">
+		<DocumentationFile>C:\Users\maros.valter\source\repos\GrpCLI\GrpCLI\GrpCLI.xml</DocumentationFile>
+		<DefineConstants>TRACE</DefineConstants>
+	</PropertyGroup>
+		
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DocumentationFile>C:\Users\maros.valter\source\repos\GrpCLI\GrpCLI\GrpCLI.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="**/*.proto" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="../SourceGenerator/SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<PackageReference Include="Google.Protobuf" Version="3.19.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.40.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.41.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="$(CompilerGeneratedFilesOutputPath)/*/**/*.cs" />
+	</ItemGroup>
+
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<!--<Exec Command="echo ProtoPath: $(ProtoPath)"/>-->
+		<PropertyGroup Condition="$(Configuration.StartsWith('Debug'))">
+			<ProtoPath>Protos\provider.proto</ProtoPath>
+			<!--<ProtoPath>$(ProtoPath.Replace('//','/'))</ProtoPath>-->
+		</PropertyGroup>
+		<!--<Exec Command="echo ProtoPath: $(ProtoPath)"/>-->
+		<Error Condition="'$(ProtoPath)' == ''" Text="Environment variable or build property 'ProtoPath' must be set." />
+		<Error Condition="$(ProtoPath.EndsWith('.proto')) == false" Text="File referenced by 'ProtoPath' must be Proto file." />
+		<PropertyGroup>
+			<ProtoName>$(ProtoPath.Substring($([MSBuild]::Add($(ProtoPath.LastIndexOf('\')), 1))))</ProtoName>
+			<ProtoName>$(ProtoPath.Substring($([MSBuild]::Add($(ProtoPath.LastIndexOf('/')), 1))))</ProtoName>
+			<ProtoName>$(ProtoName.Remove($([MSBuild]::Subtract($(ProtoName.Length), 6))))</ProtoName>
+		</PropertyGroup>
+		<!--<Exec Command="echo $(ProtoName)"/>-->
+		<ItemGroup>
+			<CompilerVisibleProperty Include="ProtoPath" />
+			<CompilerVisibleProperty Include="ProtoName" />
+		</ItemGroup>
+		<ItemGroup>
+			<Protobuf Include="$(ProtoPath)" GrpcServices="Client" />
+		</ItemGroup>
+	</Target>
+
+	<!--<ItemGroup>
+		<Protobuf Include="$(ProtoPath)" GrpcServices="Client" />
+	</ItemGroup>-->
+
+</Project>

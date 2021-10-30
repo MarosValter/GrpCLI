@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <NoPackageAnalysis>true</NoPackageAnalysis>
+	  <!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
+	  <!-- Generates a package at build -->
+	  <!--<IncludeBuildOutput>false</IncludeBuildOutput>-->
+	  <!-- Do not include the generator as a lib dependency -->
+	  <LangVersion>preview</LangVersion>
+	  <IsRoslynComponent>true</IsRoslynComponent>
+	  <Configurations>Debug;Release;DebugGenerator</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugGenerator|AnyCPU'">
+    <DefineConstants>TRACE;DEBUGGENERATOR</DefineConstants>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.11.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3" PrivateAssets="all" />
+		<!--<PackageReference Include="System.CommandLine" Version="2.0.0-beta1.21308.1" PrivateAssets="all" GeneratePathProperty="true" />-->
+		<!-- Package the generator in the analyzer directory of the nuget package -->
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
+
+	<!--<PropertyGroup>
+		<GetTargetPathDependsOn>$(GetTargetPathDependsOn);GetDependencyTargetPaths</GetTargetPathDependsOn>
+	</PropertyGroup>
+
+	<Target Name="GetDependencyTargetPaths" AfterTargets="ResolvePackageDependenciesForBuild">
+		<ItemGroup>
+			<TargetPathWithTargetPlatformMoniker Include="$(PKGSystem_CommandLine)\lib\netstandard2.0\*.dll" IncludeRuntimeDependency="false" />
+		</ItemGroup>
+	</Target>-->
+</Project>

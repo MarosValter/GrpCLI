@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GrpCLI</name>
+    </assembly>
+    <members>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.ProviderReflection">
+            <summary>Holder for reflection information generated from Protos/provider.proto</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.ProviderReflection.Descriptor">
+            <summary>File descriptor for Protos/provider.proto</summary>
+        </member>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest">
+             <summary>
+            
+             Requests Health Monitor (HM) events associated with given parameters.
+             </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.DeviceFieldNumber">
+            <summary>Field number for the "device" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.Device">
+            <summary>
+            Device (microscope) whose HM data is to be retrieved
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.ParametersFieldNumber">
+            <summary>Field number for the "parameters" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.Parameters">
+            <summary>
+            Collection of parameters to be queried for HM data
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.FromDateFieldNumber">
+            <summary>Field number for the "fromDate" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.FromDate">
+            <summary>
+            (optional) Opening date of the interval whose data is to be found, exclusive
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.ToDateFieldNumber">
+            <summary>Field number for the "toDate" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.ToDate">
+            <summary>
+            (optional) Closing date of the interval whose data is to be found, inclusive
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.LimitFieldNumber">
+            <summary>Field number for the "limit" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.Limit">
+            <summary>
+            (optional) Maximum number of events (per parameter) to be included in the response.
+            </summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.HasLimit">
+            <summary>Gets whether the "limit" field is set</summary>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest.ClearLimit">
+            <summary>Clears the value of the "limit" field</summary>
+        </member>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter">
+             <summary>
+            
+             Representation of Health Monitor (HM) parameter.
+             </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.CorrelationIdFieldNumber">
+            <summary>Field number for the "correlationId" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.CorrelationId">
+            <summary>
+            Transient identifier, unique withing scope of a request/response
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.ModuleTypeFieldNumber">
+            <summary>Field number for the "moduleType" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.ModuleType">
+            <summary>
+            Event module type identifying name, e.g. 'Imaging'
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.ComponentTypeFieldNumber">
+            <summary>Field number for the "componentType" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.ComponentType">
+            <summary>
+            Event component type identifying name, e.g. 'PIA4'
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.EventTypeFieldNumber">
+            <summary>Field number for the "eventType" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.EventType">
+            <summary>
+            Event type identifying name, e.g. 'CartridgeLoadsEvent'
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.PropertyTypeFieldNumber">
+            <summary>Field number for the "propertyType" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Parameter.PropertyType">
+            <summary>
+            Event property type identifying name, e.g. 'LoadCartridgeCounter'
+            </summary>
+        </member>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Device">
+             <summary>
+            
+             Representation of a device (microscope).
+             </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Device.IdFieldNumber">
+            <summary>Field number for the "id" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Device.Id">
+            <summary>
+            Device identifier aka DeviceGuid, e.g. 'cb82479b-2ebe-4ed5-9166-b6ffc4106e4a'
+            </summary>
+        </member>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data">
+             <summary>
+            
+             Representation of Health Monitor (HM) event. Relevant collections are guaranteed 
+             to be sorted by event date, descendingly. This also applies for queries where limit is specified.
+             </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data.CorrelationIdFieldNumber">
+            <summary>Field number for the "correlationId" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data.CorrelationId">
+            <summary>
+            Transient parameter identifier, unique withing scope of a request/response
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data.EventDateFieldNumber">
+            <summary>Field number for the "eventDate" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data.EventDate">
+            <summary>
+            HM event occurrence time stamp, e.g. '2021-09-01T00:08:01+00:00'
+            </summary>
+        </member>
+        <member name="F:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data.EventValueFieldNumber">
+            <summary>Field number for the "eventValue" field.</summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.Data.EventValue">
+            <summary>
+            HM event string value, e.g. '-3.13870180037103'
+            </summary>
+        </member>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider">
+             <summary>
+            
+             Data Exploration Platform (DEP) Health Monitor (HM) gRPC API entry point.
+             </summary>
+        </member>
+        <member name="P:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.Descriptor">
+            <summary>Service descriptor</summary>
+        </member>
+        <member name="T:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient">
+            <summary>Client for HmProvider</summary>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.#ctor(Grpc.Core.ChannelBase)">
+            <summary>Creates a new client for HmProvider</summary>
+            <param name="channel">The channel to use to make remote calls.</param>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.#ctor(Grpc.Core.CallInvoker)">
+            <summary>Creates a new client for HmProvider that uses a custom <c>CallInvoker</c>.</summary>
+            <param name="callInvoker">The callInvoker to use to make remote calls.</param>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.#ctor">
+            <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.#ctor(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Protected constructor to allow creation of configured clients.</summary>
+            <param name="configuration">The client configuration.</param>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.GetParameters(Google.Protobuf.WellKnownTypes.Empty,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Yields collection of HM parameters known to DEP
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.GetParameters(Google.Protobuf.WellKnownTypes.Empty,Grpc.Core.CallOptions)">
+            <summary>
+            Yields collection of HM parameters known to DEP
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.GetDevices(Google.Protobuf.WellKnownTypes.Empty,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Yields collection of devices (microscopes) known to DEP
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.GetDevices(Google.Protobuf.WellKnownTypes.Empty,Grpc.Core.CallOptions)">
+            <summary>
+            Yields collection of devices (microscopes) known to DEP
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.GetData(ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest,Grpc.Core.Metadata,System.Nullable{System.DateTime},System.Threading.CancellationToken)">
+            <summary>
+            Yields collection of HM events that match given request, sorted by event date, descendingly
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+            <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+            <param name="cancellationToken">An optional token for canceling the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.GetData(ThermoFisher.DataPlatform.DsPersistenceApi.Services.DataRequest,Grpc.Core.CallOptions)">
+            <summary>
+            Yields collection of HM events that match given request, sorted by event date, descendingly
+            </summary>
+            <param name="request">The request to send to the server.</param>
+            <param name="options">The options for the call.</param>
+            <returns>The call object.</returns>
+        </member>
+        <member name="M:ThermoFisher.DataPlatform.DsPersistenceApi.Services.HmProvider.HmProviderClient.NewInstance(Grpc.Core.ClientBase.ClientBaseConfiguration)">
+            <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
+        </member>
+    </members>
+</doc>
